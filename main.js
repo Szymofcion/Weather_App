@@ -24,20 +24,20 @@ const getWeather = () => {
         } else if (status.id >= 300 && status.id < 400) {
             photo.setAttribute('src', './img/drizzle.png')
         } else if (status.id >= 500 && status.id < 600) {
-            photo.setAttribute('src', './img/rain')
-        } 
-console.log(status.id);
+            photo.setAttribute('src', './img/rain.png')
+        } else if (status.id >= 600 && status.id < 700) {
+            photo.setAttribute('src', './img/rain.png')
+        } else if (status.id >= 700 && status.id < 800) {
+            photo.setAttribute('src', './img/rain.png')
+        } else if (status.id === 800) {
+            photo.setAttribute('src', './img/rain.png')
+        }
+        console.log(status.id);
 
         cityName.textContent = res.data.name
         temperature.textContent = Math.floor(temp) + '°C'
         humidity.textContent = humi + '%'
         weather.textContent = status.main
-
-
-
-
-
-
     }).catch(() => warning.textContent = 'Wpisałeś zła nazwe miasta')
 }
 
