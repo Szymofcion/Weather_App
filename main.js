@@ -18,11 +18,35 @@ const getWeather = () => {
         const temp = res.data.main.temp
         const humi = res.data.main.humidity
         const status = res.data.weather[0]
+
+        if (status.id >= 200 && status.id < 300) {
+            photo.setAttribute('src', './img/thunderstorm.png')
+        } else if (status.id >= 300 && status.id < 400) {
+            photo.setAttribute('src', './img/drizzle.png')
+        } else if (status.id >= 500 && status.id < 600) {
+            photo.setAttribute('src', './img/rain')
+        } 
+console.log(status.id);
+
         cityName.textContent = res.data.name
         temperature.textContent = Math.floor(temp) + '°C'
         humidity.textContent = humi + '%'
         weather.textContent = status.main
-    })
+
+
+
+
+
+
+    }).catch(() => warning.textContent = 'Wpisałeś zła nazwe miasta')
 }
+
+const enterCheck = (e) => {
+    if (e.key === 'Enter') {
+        getWeather()
+    }
+}
+input.addEventListener('keyup', enterCheck)
 button.addEventListener('click', getWeather)
+
 
